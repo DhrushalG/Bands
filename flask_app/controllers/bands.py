@@ -39,7 +39,6 @@ def my_bands(user_id):
     data = {
         'user_id': user_id
     }
-    # bands = Band.my_bands(data)
     bands = Band.get_all_bands(data)
     return render_template("my_bands.html", bands = bands)
 

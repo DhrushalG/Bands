@@ -55,7 +55,7 @@ class Band:
 
         if len(data['genre']) < 3:
             is_valid = False
-            flash("Band's genre' needs to be greater than 3 characters")
+            flash("Band's genre needs to be greater than 3 characters")
 
         if len(data['home_city']) < 3:
             is_valid = False
@@ -68,12 +68,6 @@ class Band:
         query = "SELECT * FROM bands JOIN users ON bands.user_id = users.id LEFT JOIN members ON bands.id = members.bands_id WHERE bands.id = %(bands_id)s;"
         result = connectToMySQL('bands_schema').query_db(query, data)
         single_band = cls(result[0])
-        # like = 0;
-        # for item in result:
-        #     if item['bands_id']:
-        #         like += 1;
-        # single_band.num_of_likes += like;
-
         return single_band
 
     @classmethod

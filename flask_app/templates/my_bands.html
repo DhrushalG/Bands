@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2> Viewing {{ session['first_name'] }}'s bands</h2>
+
+    <div>
+        <table>
+            <tr>
+                <td>Created Bands:</td>
+            </tr>
+            {% for band in bands %}
+            <tr>
+                {% if band.user_id == session['user_id'] %}
+                <td>{{ band.name }}
+                    <a href="/bands/edit/{{ band.id }}">| edit |</a>
+                    <a href="/bands/{{ band.id }}/delete"> delete |</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        <table>
+            <tr>
+                <td>Joined Bands:</td>
+            </tr>
+            {% for band in bands %}
+            <tr>
+                {% if band.id == band.bands_id %}
+                <td>{{ band.name }}
+                    <a href="/delete/member/{{ band.id }}">| Leave |</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <a href="/dashboard">Dashboard</a>
+    <a href="/users/logout">Logout</a>
+</body>
+<style>
+    div {
+        display: flex;
+    }
+    table {
+        margin: 0 20px;
+    }
+</style>
+
+</html>

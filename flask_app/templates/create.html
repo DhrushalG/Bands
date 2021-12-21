@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/bands/create" method=POST>
+        <label for="">Name: <input type="text" name="name"></label> <br>
+        <label for="">Genre: <input type="text" name="genre"></label> <br>
+        <label for="">Home City: <input type="text" name="home_city"></label> <br>
+            <input type="submit" value="Create">
+    </form>
+    <a href="/bands/{{ session['user_id'] }}">My Bands</a>
+    <a href="/dashboard">All Bands</a>
+    <a href="/users/logout">Logout</a>
+</body>
+
+</html>

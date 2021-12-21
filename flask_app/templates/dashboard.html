@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{ session['first_name'] }}</h1>
+    <h2>All bands</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Founding Member</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+        {% for band in bands %}
+        <tr>
+            <td>{{ band.name }}</td>
+            <td>{{ band.first_name }} {{ band.last_name }}</td>
+            <td>{{ band.genre }}</td>
+            <td>
+                {% if band.user_id != session['user_id'] %}
+                {% if band.bands_id == None %}
+                <a href="add/member/{{ band.id }}">| Join |</a>
+                {% endif %}
+                {% endif %}
+
+                {% if band.bands_id != None %}
+                <a href="delete/member/{{ band.id }}">| Leave |</a>
+                {% endif %}
+
+                {% if band.user_id == session['user_id'] %}
+                <a href="/bands/edit/{{ band.id }}">| edit |</a>
+                <a href="/bands/{{ band.id }}/delete"> delete |</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/bands/{{ session['user_id'] }}">My Bands</a>
+    <a href="/bands/new">Create a band</a>
+    <a href="/users/logout">Logout</a>
+
+</body>
+</html>

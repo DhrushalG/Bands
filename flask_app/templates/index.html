@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/index.css')}}">
     <title>Document</title>
 </head>
+
 <body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}           
-        {% for message in messages %}      
-            <p>{{message}}</p>            
+    <div class="flash">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
         {% endfor %}
-    {% endif %}
-{% endwith %}
-    <h1>Registration</h1>
-    <form action="/users/register" method='POST'>
-        First Name: <input type="text" name="first_name"><br>
-        Last Name: <input type="text" name="last_name"><br>
-        Email: <input type="text" name="email"><br>
-        Password: <input type="password" name="password"><br>
-        Confirm Password: <input type="password" name="confirm_password"><br>
-        <input type="submit">
-    </form>
-    <h2>Login</h2>
-    <form action="/users/login" method='POST'>
-        Email: <input type="text" name="email"><br>
-        Password: <input type="password" name="password"><br>
-        <input type="submit">
-    </form>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="body2">
+        <form action="/users/register" method='POST'>
+            <table>
+                <th>Registration</th>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="first_name"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="last_name"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td><input type="password" name="confirm_password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit"></td>
+                </tr>
+            </table>
+        </form>
+        <form action="/users/login" method='POST'>
+            <table>
+                <th>Login</th>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>

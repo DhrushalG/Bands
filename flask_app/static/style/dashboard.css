@@ -1,0 +1,41 @@
+*{
+    margin: 0 auto;
+    font-family:sans-serif;
+}
+body{
+    width: 90%;
+    background-color: rgb(206, 76, 76);
+}
+
+.navbar{
+    width: 100%;
+    display:flex;
+    background-color: rgb(160, 150, 141);
+    color: rgb(206, 76, 76);
+}
+
+h1{
+    margin-left: 50px;
+}
+a{
+    width: 120px;
+    margin: 5px 0;
+}
+
+.body2{
+    text-align: center;
+    margin: 5% 0;
+    font-size: 20px;
+}
+
+table{
+    border-radius: 2% 2%;
+    background-color: rgb(20, 107, 103);
+    text-align:start;
+    box-shadow: 5px 5px black;
+}
+
+.table2{
+    display: flex;
+    margin: 5%;
+}

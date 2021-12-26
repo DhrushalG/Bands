@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/dashboard.css')}}">
     <title>Document</title>
 </head>
 
 <body>
-    <h2> Viewing {{ session['first_name'] }}'s bands</h2>
-
-    <div>
+    <div class='navbar'>
+    <h1> Viewing {{ session['first_name'] }}'s bands</h1>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/users/logout">Logout</a>
+    </div>
+    <div class='body2 table2'>
         <table>
-            <tr>
-                <td>Created Bands:</td>
-            </tr>
+                <th>Created Bands</th>
             {% for band in bands %}
             <tr>
                 {% if band.user_id == session['user_id'] %}
@@ -27,11 +29,8 @@
             </tr>
             {% endfor %}
         </table>
-
         <table>
-            <tr>
-                <td>Joined Bands:</td>
-            </tr>
+                <th>Joined Bands</th>
             {% for band in bands %}
             <tr>
                 {% if band.id == band.bands_id %}
@@ -44,16 +43,6 @@
         </table>
     </div>
 
-    <a href="/dashboard">Dashboard</a>
-    <a href="/users/logout">Logout</a>
 </body>
-<style>
-    div {
-        display: flex;
-    }
-    table {
-        margin: 0 20px;
-    }
-</style>
 
 </html>

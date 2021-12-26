@@ -1,0 +1,33 @@
+* {
+    margin: 0 auto;
+}
+
+.flash{
+    min-height: 120px;
+    color: rgb(107, 6, 6);
+}
+
+body {
+    background-color: rgb(20, 107, 103);
+}
+
+.body2 {
+    display: flex;
+    margin: 10% auto;
+}
+
+table {
+    border: 1px solid black;
+    padding: 50px 15px;
+    background-color: rgb(206, 76, 76);
+    border-radius: 10% 10%;
+    box-shadow: 5px 5px rgb(39, 35, 35);
+}
+
+input {
+    background-color: rgb(160, 150, 141);
+}
+
+th {
+    font-size: 30px;
+}
